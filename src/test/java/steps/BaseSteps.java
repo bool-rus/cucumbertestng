@@ -1,11 +1,12 @@
 package steps;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Если;
 import cucumber.api.java.ru.И;
 import cucumber.api.java.ru.То;
-import ru.bool.cucumber.runner.FeatureSingleton;
+import static ru.bool.cucumber.runner.FeatureSingleton.runner;
 
 import java.util.logging.Logger;
 
@@ -51,12 +52,24 @@ public class BaseSteps {
     @И("^выполняю сценарий \"([^\"]*)\"$")
     public void выполняюСценарий(String scenarioName) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        FeatureSingleton.INSTANCE.runScenario(scenarioName);
+        runner().runScenario(scenarioName);
     }
 
     @И("^выполняю шаблон \"([^\"]*)\":$")
     public void выполняюШаблон(String templateName, DataTable dataTable) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        FeatureSingleton.INSTANCE.runOutline(templateName, dataTable);
+        runner().runOutline(templateName, dataTable);
+    }
+
+    @Если("^выполняю шаблон \"([^\"]*)\" используя \"([^\"]*)\":$")
+    public void выполняюШаблонИспользуя(String templateName, String featureName, DataTable params) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        runner().runOutline(templateName,params,featureName);
+    }
+
+    @Если("^выполняю сценарий \"([^\"]*)\" используя \"([^\"]*)\"$")
+    public void выполняюСценарийИспользуя(String scenarioName, String featureName) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        runner().runScenario(scenarioName,featureName);
     }
 }
