@@ -7,13 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Обертка фичи для быстрого поиска сценариев и шаблонов
+ * используется в {@link FeatureRunner}
  * Created by bool on 06.09.17.
  */
-public class FeatureWrapper {
+class FeatureWrapper {
     private final Map<String,CucumberScenario>          sceanrios = new HashMap<>();
     private final Map<String,CucumberScenarioOutline>   outlines = new HashMap<>();
 
-    public FeatureWrapper(CucumberFeature feature) {
+    FeatureWrapper(CucumberFeature feature) {
         feature.getFeatureElements().forEach(this::addElement);
     }
 
@@ -34,11 +36,11 @@ public class FeatureWrapper {
 
     }
 
-    public CucumberScenario getScenario(String name) {
+    CucumberScenario getScenario(String name) {
         return sceanrios.get(name);
     }
 
-    public CucumberScenarioOutline getOutline(String name) {
+    CucumberScenarioOutline getOutline(String name) {
         return outlines.get(name);
     }
 

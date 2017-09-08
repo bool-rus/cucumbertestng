@@ -40,18 +40,16 @@ public class FeatureRunner {
     }
 
     /**
-     * выполнить сценарий из текущего функционала
-     * сценарий выполняется без контекста
-     * @param scenario название сценария, который нужно выполнить
+     * запустить сценарий из текущей фичи
+     * @see #runScenario(String, String)
      */
     public void runScenario(String scenario) {
         runScenario(scenario,currentFeature);
     }
 
     /**
-     *
-     * @param outlineName
-     * @param params
+     * запустить шаблон из текущей фичи
+     * @see #runOutline(String, DataTable, String)
      */
     public void runOutline(String outlineName, DataTable params) {
         runOutline(outlineName,params,currentFeature);
@@ -61,6 +59,14 @@ public class FeatureRunner {
         currentFeature = feature.getGherkinFeature().getName();
     }
 
+
+    /**
+     * выполнить сценарий
+     * сценарий выполняется без контекста
+     * @param scenario название сценария, который нужно выполнить
+     * @param feature название фичи, в которой искать указанный сценарий
+     */
+
     public void runScenario(String scenario, String feature) {
         String backup = currentFeature;
         currentFeature = feature;
@@ -68,6 +74,15 @@ public class FeatureRunner {
         currentFeature=backup;
     }
 
+    /**
+     * выполнить шаблон (Описание сценария)
+     * выполняется без контекста (т.е. с первого до последнего шага сценария
+     * без дополнительных шагов, например, предварительных)
+     *
+     * @param outlineName - название шаблона
+     * @param params - таблица с данными, которая будет использована в качестве примеров для шаблона
+     * @param feature - название фичи
+     */
     public void runOutline(String outlineName, DataTable params, String feature) {
         String backup = currentFeature;
         currentFeature = feature;
