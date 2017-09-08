@@ -12,7 +12,6 @@ import cucumber.runtime.model.CucumberScenarioOutline;
 import cucumber.runtime.model.CucumberTagStatement;
 import gherkin.formatter.model.Examples;
 import gherkin.formatter.model.ExamplesTableRow;
-import ru.bool.cucumber.FeatureWrapper;
 
 import java.util.*;
 
@@ -40,10 +39,20 @@ public class FeatureRunner {
         );
     }
 
+    /**
+     * выполнить сценарий из текущего функционала
+     * сценарий выполняется без контекста
+     * @param scenario название сценария, который нужно выполнить
+     */
     public void runScenario(String scenario) {
         runScenario(scenario,currentFeature);
     }
 
+    /**
+     *
+     * @param outlineName
+     * @param params
+     */
     public void runOutline(String outlineName, DataTable params) {
         runOutline(outlineName,params,currentFeature);
     }

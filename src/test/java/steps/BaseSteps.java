@@ -1,12 +1,11 @@
 package steps;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Если;
 import cucumber.api.java.ru.И;
 import cucumber.api.java.ru.То;
-import static ru.bool.cucumber.runner.FeatureSingleton.runner;
+import static ru.bool.cucumber.runner.FeatureRunnerSingleton.runner;
 
 import java.util.logging.Logger;
 
