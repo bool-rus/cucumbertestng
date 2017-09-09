@@ -27,8 +27,9 @@ public class FeatureRunner {
     private final Map<String, FeatureWrapper> features = new HashMap<>();
     public final Class testClass;
     private String currentFeature;
+    private boolean inUse = false;
 
-    public FeatureRunner(Class testClass) {
+    FeatureRunner(Class testClass) {
         this.testClass = testClass;
         classLoader = testClass.getClassLoader();
         resourceLoader = new MultiLoader(classLoader);
@@ -94,6 +95,8 @@ public class FeatureRunner {
     }
 
     private void runCucumberTagStatement(CucumberTagStatement statement) {
+        boolean inUsePrev = inUse;
+        inUse = true;
         Runtime runtime = new Runtime(
                 resourceLoader,
                 classLoader,
@@ -107,8 +110,12 @@ public class FeatureRunner {
                 resultListener,
                 runtime
         );
+        inUse = inUsePrev;
     }
 
+    public boolean inUse() {
+        return inUse;
+    }
 
     private Examples createExamples(DataTable dataTable) {
         List<ExamplesTableRow> rows = new ArrayList<>(dataTable.raw().size());
