@@ -1,5 +1,6 @@
 package ru.bool.cucumber.testng;
 
+import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.CucumberFeatureWrapperImpl;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by bool on 06.09.17.
  */
+@CucumberOptions(plugin = "ru.bool.cucumber.allure.CustomAllureReporter")
 @Test(singleThreaded = true)
 public class CucumberTestNG {
 

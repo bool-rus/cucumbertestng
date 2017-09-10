@@ -9,9 +9,7 @@ import ru.bool.cucumber.testng.CucumberTestNG;
  */
 @CucumberOptions(
         glue = "steps",
-        features = {
-                "classpath:features"
-        }
+        features = "classpath:features"
 )
 public class FirstTest extends CucumberTestNG {
 }
