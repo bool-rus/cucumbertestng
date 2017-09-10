@@ -1,8 +1,8 @@
 package tests;
 
 import cucumber.api.CucumberOptions;
-import org.testng.annotations.AfterMethod;
-import ru.bool.cucumber.testng.TestNGCucumberTestsImpl;
+import org.testng.annotations.Test;
+import ru.bool.cucumber.testng.CucumberTestNG;
 
 /**
  * Created by bool on 04.09.17.
@@ -13,6 +13,6 @@ import ru.bool.cucumber.testng.TestNGCucumberTestsImpl;
                 "classpath:features"
         }
 )
-public class FirstTest extends TestNGCucumberTestsImpl {
+public class FirstTest extends CucumberTestNG {
 }
 

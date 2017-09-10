@@ -1,4 +1,4 @@
-package ru.bool.cucumber.runner;
+package ru.bool.cucumber.feature;
 
 import cucumber.runtime.model.*;
 import ru.bool.cucumber.reflection.faces.BackgroundContainer;
