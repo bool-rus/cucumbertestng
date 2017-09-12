@@ -1,6 +1,5 @@
 package ru.bool.cucumber.allure;
 
-import gherkin.formatter.model.Result;
 import gherkin.formatter.model.Scenario;
 import ru.yandex.qatools.allure.cucumberjvm.AllureReporter;
 
@@ -20,10 +19,5 @@ public class CustomAllureReporter extends AllureReporter {
     public void endOfScenarioLifeCycle(Scenario scenario) {
         if(instance().isRoot())
             super.endOfScenarioLifeCycle(scenario);
-    }
-
-    @Override
-    public void result(Result result) {
-        super.result(result);
     }
 }

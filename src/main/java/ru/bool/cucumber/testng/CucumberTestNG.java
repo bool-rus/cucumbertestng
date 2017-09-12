@@ -3,6 +3,7 @@ package ru.bool.cucumber.testng;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.CucumberFeatureWrapperImpl;
+import gherkin.formatter.model.Tag;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,6 +27,7 @@ public class CucumberTestNG {
     @DataProvider(parallel = true)
     public Object[][] getFeatures() {
         List<Object[]> result = new ArrayList<>();
+        //TODO: сюда можно прилепить сортировку по тэгам, чтобы можно было устанавливать порядок
         instance(getClass()).getFeaturesToRun().forEach(
                 feature -> result.add(new Object[]{new CucumberFeatureWrapperImpl(feature)})
         );
